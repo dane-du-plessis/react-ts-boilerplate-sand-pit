@@ -1,17 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import './App.css';
-import Home from './components/pages/Home';
-import About from './components/pages/About';
-import Users from './components/pages/Users';
+import React from "react";
+import { observer } from "mobx-react";
+import logo from "./logo.svg";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./App.css";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import Users from "./components/pages/Users";
+import TodoList from "./components/pages/TodoList";
 
-function App() {
+// TODO how to type the props?
+const App = observer((props: any) => {
   return (
     <Router>
       <div>
@@ -24,14 +22,30 @@ function App() {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/users">users</Link>
+            </li>
+            <li>
+              <Link to="/todolist">Todo List</Link>
             </li>
           </ul>
         </nav>
         <Switch>
-          <Route path="/users"> <Users /></Route>
-          <Route path="/about"> <About /></Route>
-          <Route path="/"> <Home /></Route>
+          <Route path="/users">
+            {" "}
+            <Users />
+          </Route>
+          <Route path="/about">
+            {" "}
+            <About />
+          </Route>
+          <Route path="/TodoList">
+            {" "}
+            <TodoList todos={props.store}></TodoList>
+          </Route>
+          <Route path="/">
+            {" "}
+            <Home />
+          </Route>
         </Switch>
       </div>
     </Router>
@@ -52,6 +66,6 @@ function App() {
     //   </header>
     // </div>
   );
-}
+});
 
 export default App;
