@@ -1,12 +1,13 @@
 import React from "react";
 import { observer } from "mobx-react";
-import logo from "./logo.svg";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import logo from "./logo.svg";
 import "./App.css";
-import Home from "./components/pages/Home";
-import About from "./components/pages/About";
-import Users from "./components/pages/Users";
-import TodoList from "./components/pages/TodoList";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Users from "./pages/Users";
+import TodoList from "./pages/TodoList";
 
 // TODO how to type the props?
 const App = observer((props: any) => {

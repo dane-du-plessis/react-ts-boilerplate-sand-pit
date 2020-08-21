@@ -84,8 +84,8 @@ onSnapshot(store, (snapshot) => console.log(snapshot));
 // console.log("Joe:", getSnapshot(joe));
 // console.log("Eat TODO:", getSnapshot(eat));
 
-store.addTodo("1", "Eat Pudding");
-store.todos.get("1")?.toggle();
+// store.addTodo("1", "Eat Pudding");
+// store.todos.get("1")?.toggle();
 
 export interface ITodo extends Instance<typeof Todo> {} // => { title: string; setTitle: (v: string) => void }
 export interface ITodoSnapshotIn extends SnapshotIn<typeof Todo> {} // => { title?: string }

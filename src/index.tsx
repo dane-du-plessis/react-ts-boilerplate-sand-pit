@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {ThemeProvider} from "@chakra-ui/core";
+
 import './index.css';
 import App from './App';
 import store from './models/TodoStore';
 import * as serviceWorker from './serviceWorker';
+import customTheme from './style/customTheme';
+import theme from './style/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App store={store}/>
+    <ThemeProvider theme={customTheme}>
+       <App store={store}/>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

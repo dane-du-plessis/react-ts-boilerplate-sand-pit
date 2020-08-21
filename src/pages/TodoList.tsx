@@ -1,7 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { ITodo } from "../../models/TodoStore";
+import { Checkbox, CheckboxGroup, Stack} from "@chakra-ui/core";
+import { ITodo } from "../models/TodoStore";
 import { values } from "mobx";
+import SliderInput from '../components/NumberSlider';
 
 let id = 1;
 const randomId = () => id++;
@@ -17,8 +19,6 @@ const TodoCounterView = observer((props: any) => (
 
 // TODO figure out how to do types with mobx, shouldn't be writing '| any' anywhere!
 const TodoList = observer((props: TodoProps | any) => {
-  console.log(values(props.todos))
-
   return (
     <div>
       <h1>Todo List</h1>
@@ -29,10 +29,14 @@ const TodoList = observer((props: TodoProps | any) => {
       <h2>You've got these things to do:</h2>
       {values(props.todos.todos).map(todo => (
         <div>
-          <input type="checkbox" onChange={e => todo.toggle()}/>
-          <input type="text" value={todo.name} onChange={e => todo.setName(e.target.value)} />
+          <Stack spacing={10} isInline>
+            <Checkbox defaultIsChecked size="sm" onChange={e => todo.toggle()}/>
+            <input type="text" value={todo.name} onChange={e => todo.setName(e.target.value)} />
+          </Stack>
         </div>
       ))}
+      <h2> And a nice slider</h2>
+      <SliderInput/>
     </div>
   );
 });
